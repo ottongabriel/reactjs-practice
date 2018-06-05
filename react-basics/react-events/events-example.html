@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Learning React.js</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <script src="https://fb.me/react-0.14.7.js"></script>
+  <script src="https://fb.me/react-dom-0.14.7.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.25/browser.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div id="jumbotron"></div>
+      </div>
+    </div>
+  </div>
+  <script type="text/babel">
+    var Jumbotron = React.createClass({
+      propTypes: {
+        title:React.PropTypes.string.isRequired
+      },
+      getDefaultProps: function(){
+        return {
+          title: "This is the Title!!!",// missing this line would cause an error because it is especified as require above.
+          // title: false, // Because of the type set above, this line woud cause an error since this is not a string, it is a boolean
+          textOne: "This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.",
+          textTwo: "It uses utility classes for typography and spacing to space content out within the larger container.",
+        }
+      },
+
+      render: function(){
+        return(
+          <div>
+            <div className="jumbotron">
+              <h1 className="display-4">{this.props.title}</h1>
+              <p className="lead">{this.props.textOne}</p>
+              <hr className="my-4"></hr>
+              <p>{this.props.textTwo}</p>
+              <p className="lead">
+                <a onClick={this.onTheClick.bind(this, 'Hello', 'Goodbye')} className="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+              </p>
+            </div>
+          </div>
+        )
+      },
+
+      onTheClick: function(greeting, valediction) {
+        alert(valediction)
+      }
+    });
+
+    ReactDOM.render(
+      <Jumbotron />,
+      document.getElementById('jumbotron')
+    );
+  </script>
+</body>
+</html>
