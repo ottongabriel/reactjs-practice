@@ -3,9 +3,9 @@ import TodoItem from "./TodoItem";
 import PropTypes from 'prop-types';
 
 class Todos extends Component {
-  // deleteTodo(id){
-  //   this.props.onDelete(id)
-  // }
+  deleteTodo(id){
+    this.props.onDelete(id)
+  }
 
   render() {
     let todoItems;
@@ -14,7 +14,7 @@ class Todos extends Component {
       todoItems = this.props.todos.map(todo => {
         return (
           <TodoItem 
-            // onDelete={this.deleteTodo.bind(this)} 
+            onDelete={this.deleteTodo.bind(this)} 
             key={todo.title} 
             todo={todo} 
           />
@@ -33,7 +33,7 @@ class Todos extends Component {
 
 Todos.propTypes = {
   todos: PropTypes.array,
-  // onDelete: PropTypes.func
+  onDelete: PropTypes.func
 }
 
 export default Todos;
